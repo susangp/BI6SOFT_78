@@ -1,0 +1,95 @@
+/*estilos del header*/
+
+body{
+
+  font-family: sans-serif;
+  padding: 90px 20px 0;
+
+}
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.header {
+    
+    background-color: #1bc3ea;
+    height: 100px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+
+}
+
+.nav{
+
+    display: flex;
+    justify-content: space-between;
+    
+
+
+}
+
+.nav-link{
+    color: rgb(24, 6, 6);
+    text-decoration: none;
+    
+
+
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px ;
+    line-height: 80px;
+
+
+}
+
+.nav-menu{
+
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+
+
+}
+
+.nav-menu-item{
+    font-size: 18px;
+    margin: 0 20px;
+    line-height: 80px;
+    text-transform: uppercase;
+    
+
+
+
+
+}
+
+.nav-menu-item:hover {
+    background-color: #fa4747;
+    padding: 6px 11px;
+    border-radius: 3px;
+    transition: 0.3s;
+    
+
+
+
+}
+
+
+.brand img {
+    width: 70px;
+    height: 70px;
+    transform: translate(-1px, -10%);
+    
+
+
+
+}
+
+
+
+
