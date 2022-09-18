@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Formulario Inicio Sesion | CAEC</title>
-    <link rel="stylesheet" href="controller/css/style.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="controller/css/style.css">
+        <link rel="stylesheet" href="controller/css/bootstrap.min.css">
+        
+        <link rel="shortcut icon" href="controller/image/logo-pet-1.png"">
+       
+        
+    </head>
 
 <body onload="form1.doc.focus()">
 
+    <header class="header"> 
+        <nav class="navbar navbar-inverse" role="banner">
+            <br>
+            <label for="" class="brand" href="index2.html">
+                <a href="index2.html"> <img src="controller/image/logo_eslogan2.png" alt=""></a>
+
+
+            </label>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    
+                  
+                    <li class="btn btn-info"><a href="index2.html">Inicio</a></li>
+                    
+
+
+                </ul>
+            </div>
+
+
+        </nav>
+
+    </header>
+
     <div class="login-box">
         <!--crea una caja imaginaria-->
-        <img src="controller/image/logo.png" class="avatar" alt="Avatar Image">
+        <img src="controller/image/logo-pet-1.png" class="avatar" alt="Avatar Image">
 
         <!--insertamos una imagen-->
         <h1>RECUPERAR CONTRASEÑA</h1>
         <!--Inserta titulo-->
+        
         <form method="POST" name="form1" id="form1" autocomplete="off" action="model/recuperarclave.php">
             <!--crea formularios-->
 
@@ -25,7 +56,7 @@
             <!-- Caja de texto donde el usuario digite texto -->
             <input type="submit" name="inicio" id="inicio" value="Validar">
             <!--Crear el boton-->
-            <a href="index.html">Volver Pagina Principal</a>
+            <a href="index2.html">Volver Pagina Principal</a>
         </form>
     </div>
 </body>

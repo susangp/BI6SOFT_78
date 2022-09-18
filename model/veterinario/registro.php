@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("../../db/connection.php");
-include("../../controller/validarSesion.php");
+require_once("../connections/connection.php");
+include("../includes/validarSesion.php");
 $sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql) or die(mysqli_error());
 $usua = mysqli_fetch_assoc($usuarios);
@@ -23,9 +23,9 @@ $usua = mysqli_fetch_assoc($usuarios);
 <body>
 	<header>
 		<span id="button-menu" class="fa fa-bars"></span>
-		<span class="identificacion"> <?php echo $usua['tipo_usuario'] ?></span>
-		<span class="identificacion">
-			<a href="../../controller/salir.php"><img src="../../controller/image/salir.png" width=30></a>
+		<span class="usuario"> <?php echo $usua['tipo_usuario'] ?></span>
+		<span class="usuario">
+			<a href="../includes/salir.php"><img src="../image/salir.png" width=30></a>
 			<?php echo $usua['nombres'] ?>
 		</span>
 

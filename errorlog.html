@@ -5,20 +5,46 @@
     <meta charset="utf-8">
     <title>Formulario Inicio Sesion | CAEC</title>
     <link rel="stylesheet" href="controller/css/style.css">
+    <link rel="stylesheet" href="controller/css/bootstrap.min.css">
 </head>
 
 <body>
 
+    <header class="header"> 
+        <nav class="navbar navbar-inverse" role="banner">
+            <br>
+            <label for="" class="brand" href="index2.html">
+                <a href="index2.html"> <img src="controller/image/logo_eslogan2.png" alt=""></a>
+
+
+            </label>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    
+                  
+                    <li class="btn btn-outline-primary"><a href="index2.html">Inicio</a></li>
+                    
+
+
+                </ul>
+            </div>
+
+
+        </nav>
+
+    </header>
+
     <div class="login-box">
-        <img src="controller/image/logo.png" class="avatar" alt="Avatar Image">
+        <img src="controller/image/logo-pet-1.png" class="avatar" alt="Avatar Image">
         <h1>ERROR INICIO SESION</h1>
         <form method="post" name="form1" id="form1" action="controller/inicio.php" autocomplete="off">
             <!-- USERNAME INPUT -->
-            <label for="username">Usario</label>
-            <input type="text" name="usuario" id="usuario" placeholder="Ingrese Usuario">
+            <label for="username">Identificacion</label>
+            <input type="text" name="identificacion" id="identificacion" placeholder="Ingrese Usuario">
             <!-- PASSWORD INPUT -->
             <label for="password">Password</label>
-            <input type="password" name="clave" id="password" placeholder="Ingrese Password">
+            <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese Password">
             <input type="submit" name="inicio" id="inicio" value="Ingresar">
             <a href="#">Recordar Contraseña?</a><br>
             <a href="#">Registrarme?</a>

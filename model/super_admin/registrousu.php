@@ -1,6 +1,6 @@
 <?php
 
-require_once("db/connection.php");
+require_once("../../db/connection.php");
 
 ?>
 
@@ -35,7 +35,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     if ($fila1) {
         echo '<script>alert ("DOCUMENTO O USUARIO EXISTEN //CAMBIELOS//");</script>';
         echo '<script>windows.location="registrousu.php"</script>';
-    } else if ($identificacion == "" || $nombres == "" || $apellidos == "" || $direccion == "" || $telefono == "" || $correo == "" || $num_tarjeta == "" || $contrasena == "" || $id_tip_usuario == "" || $id_estado == "" ) {
+    } else if ($identificacion == "" || $nombres == "" || $apellidos == "" || $direccion == "" || $telefono == "" || $correo == "" || $num_tarjeta == "" || $contrasena == "" || $id_tip_usuario == "" || $id_estado == "") {
         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
         echo '<script>windows.location="registrousu.php"</script>';
     } else {
@@ -55,9 +55,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="controller/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="controller/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>PetPalace</title>
 </head>
 
@@ -68,8 +68,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     <header class="header">
         <nav class="navbar navbar-inverse" role="banner">
             <br>
-            <label for="" class="brand" href="index2.html">
-                <a href="index2.html"> <img src="controller/image/logo y slogan.png" alt=""></a>
+            <label for="" class="brand" href="index1.php">
+                <a href="index1.php"> <img src="image/logo y slogan.png" alt=""></a>
 
 
             </label>
@@ -78,7 +78,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
                 <ul class="nav navbar-nav">
 
 
-                    <li class="btn btn-info"><a href="index2.html">Inicio</a></li>
+                    <li class="btn btn-info"><a href="index.php">Perfil</a></li>
 
 
 
@@ -101,7 +101,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
 
 
     <div class="login-box">
-        <img src="controller/image/logo-pet-1.png" class="avatar" alt="Imagen Avar">
+        <img src="image/logo-pet-1.png" class="avatar" alt="Imagen Avar">
 
         <form method="POST" name="formreg" autocomplete="off">
             <label for="usuario"> REGISTRO DE USUARIOS </label>
