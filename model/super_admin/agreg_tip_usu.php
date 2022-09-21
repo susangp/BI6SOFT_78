@@ -46,7 +46,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
             <input type="submit" value="Cerrar sesión" name="btncerrar" />
         </td>
-        <input type="submit" formaction="../administrador/index.php" value="Regresar" />
+        <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
     </tr>
 </form>
 
