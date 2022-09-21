@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once("../../db/connection.php");
@@ -11,32 +10,27 @@ $masc = mysqli_fetch_assoc($mascota);
 ?>
 
 <?php
-if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
+if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     $tp = $_POST['tip_mascota'];
     $sqladd = " SELECT * FROM tipo_mascotas WHERE tipo_masc ='$tp' ";
-    $query = mysqli_query($mysqli,$sqladd);
-    $fila = mysqli_fetch_assoc ($query);
+    $query = mysqli_query($mysqli, $sqladd);
+    $fila = mysqli_fetch_assoc($query);
 
     if ($fila) {
         echo '<script>alert (" Mascota ya existe ");</script>';
         echo '<script>window.location="tipo_mascota.php"</script>';
-
-        
-    }elseif ($_POST['tip_mascota'] == ""){
+    } elseif ($_POST['tip_mascota'] == "") {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
         echo '<script>window.location="tipo_mascota.php"</script>';
-
-    }else{
+    } else {
 
         $tp = $_POST['tip_mascota'];
         $sqladd = " INSERT INTO tipo_mascotas (tipo_masc)VALUES ('$tp') ";
-        $query = mysqli_query($mysqli,$sqladd);
+        $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
         echo '<script>window.location="tipo_mascota.php"</script>';
-
     }
-  
 }
 
 
@@ -44,27 +38,27 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
 <form method="POST">
 
     <tr>
-        <td colspan='2' align="center"><?php echo $masc['nombres']?></td>
+        <td colspan='2' align="center"><?php echo $masc['nombres'] ?></td>
     </tr>
-<tr><br>
-    <td colspan='2' align="center">
-    
-    
-        <input type="submit" value="Cerrar sesión" name="btncerrar" /></td>
+    <tr><br>
+        <td colspan='2' align="center">
+
+
+            <input type="submit" value="Cerrar sesión" name="btncerrar" />
+        </td>
         <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
     </tr>
 </form>
 
-<?php 
+<?php
 
-if(isset($_POST['btncerrar']))
-{
-	session_destroy();
+if (isset($_POST['btncerrar'])) {
+    session_destroy();
 
-   
+
     header('location: ../../index2.html');
 }
-	
+
 ?>
 
 </div>
@@ -76,6 +70,7 @@ if(isset($_POST['btncerrar']))
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,56 +78,58 @@ if(isset($_POST['btncerrar']))
     <link rel="stylesheet" href="estilos.css">
     <title>Tipo Mascota</title>
 </head>
-    <body onload="frmadd.tip_mascota.focus()">
-        <section class="title" >
 
-            <h1>Formulario de Creación Tipo de Mascotas  <?php echo $masc['tipo_mascotas'] ?></h1>
-        </section>
+<body onload="frmadd.tip_mascota.focus()">
+    <section class="title">
 
-        <table class="centrar" >
-            <form method="POST" name="frmadd" autocomplete="off">
+        <h1>Formulario de Creación Tipo de Mascotas <?php echo $masc['tipo_mascotas'] ?></h1>
+    </section>
 
-                <tr>
+    <table class="centrar">
+        <form method="POST" name="frmadd" autocomplete="off">
 
-                    <td colspan="2">Tipos de Mascotas </td>
+            <tr>
 
-
-                </tr>
-
-                <tr>
-
-                    <td >Id Tipo</td>
-                    <td><input type="text" readonly > </td>
+                <td colspan="2">Tipos de Mascotas </td>
 
 
-                </tr>
+            </tr>
+
+            <tr>
+
+                <td>Id Tipo</td>
+                <td><input type="text" readonly> </td>
 
 
-                 <tr>
-
-                    <td >Tipo Mascota</td>
-                    <td><input type="text" name="tip_mascota" placeholder="Ingrese tipo mascota" style="text-transform: uppercase;"> </td>
+            </tr>
 
 
-                </tr>
+            <tr>
+
+                <td>Tipo Mascota</td>
+                <td><input type="text" name="tip_mascota" placeholder="Ingrese tipo mascota" style="text-transform: uppercase;"> </td>
 
 
-                <tr>
+            </tr>
 
-                    <td colspan="2">&nbsp; </td>
 
-                </tr>
+            <tr>
 
-                <tr>
+                <td colspan="2">&nbsp; </td>
 
-                    <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
-                    <input type="hidden" name="btnguardar" value="frmadd">
+            </tr>
 
-                </tr>                       
+            <tr>
 
-            </form>
+                <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
+                <input type="hidden" name="btnguardar" value="frmadd">
 
-        </table>
-       
-    </body>
+            </tr>
+
+        </form>
+
+    </table>
+
+</body>
+
 </html>
