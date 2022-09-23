@@ -29,7 +29,7 @@ if (isset($_POST['btncerrar'])) {
     session_destroy();
 
 
-    header('location: ../../index2.html');
+    header('location: ../../index.html');
 }
 
 ?>
@@ -102,9 +102,9 @@ if (isset($_POST['btncerrar'])) {
             </li>
 
             <li class="first-item">
-                <a href="#">
+                <a href="afiliacion.php">
                     <img src="img/analisis.png" alt="" class="imagen">
-                    <span class="text-item">OPCION 6</span>
+                    <span class="text-item">Afiliación</span>
                     <span class="down-item"></span>
                 </a>
             </li>
@@ -126,9 +126,9 @@ if (isset($_POST['btncerrar'])) {
             </li>
 
             <li>
-                <a href="#">
+                <a href="lista_usuarios.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">OPCION 9</span>
+                    <span class="text-item">Lista de Usuarios</span>
                     <span class="down-item"></span>
                 </a>
             </li>

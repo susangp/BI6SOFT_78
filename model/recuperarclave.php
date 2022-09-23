@@ -65,7 +65,7 @@ if ($_POST["inicio"]) {
                     <!-- Caja de texto donde el usuario digite texto -->
                     <input type="submit" name="inicio" id="inicio" value="cambiar">
                     <input type="hidden" name="MM_update" value="form1" />
-                    <a href="../index2.html">Volver Pagina Principal</a>
+                    <a href="../index.html">Volver Pagina Principal</a>
                     <!--TAREA VALIDA QQUE LAS DOS CONTRASEÑAS SEAN IGUALES Y QUE SEA FUERTE-->
                 </form>
         </body>
