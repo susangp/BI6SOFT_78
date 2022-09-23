@@ -10,4 +10,4 @@ unset($_SESSION['id_tip_usuario']);
 $_SESSION = array();
 session_destroy();
 session_write_close();
-header("Location: ../index2.html");
+header("Location: ../index.html");

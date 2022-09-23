@@ -78,7 +78,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
                 <ul class="nav navbar-nav">
 
 
-                    <li class="btn btn-info"><a href="index2.html">Inicio</a></li>
+                    <li class="btn btn-info"><a href="index.html">Inicio</a></li>
 
 
 

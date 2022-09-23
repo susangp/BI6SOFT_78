@@ -91,15 +91,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     </header>
 
 
-
-
-
-
-
-
-
-
-
     <div class="login-box">
         <img src="image/logo-pet-1.png" class="avatar" alt="Imagen Avar">
 
