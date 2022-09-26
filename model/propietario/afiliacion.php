@@ -49,16 +49,29 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 
 ?>
+    <form method="POST">
+
+        <tr>
+            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
+        </tr>
+        <tr><br>
+            <td colspan='2' align="center">
 
 
-<?php
+                <input type="submit" value="Cerrar sesión" name="btncerrar" />
+            </td>
+            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
+        </tr>
+    </form>
 
-if (isset($_POST['btncerrar'])) {
-    session_destroy();
+    <?php
+
+    if (isset($_POST['btncerrar'])) {
+        session_destroy();
 
 
-    header('location: ../../index.html');
-}
+        header('location: ../../index.html');
+    }
 
 ?>
 
@@ -76,58 +89,15 @@ if (isset($_POST['btncerrar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../controller/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
-    <link rel=" stylesheet" href="../../controller/css/style.css">
-    <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <link rel="stylesheet" href="estilos.css">
+    <title>AFILIACION</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
-    <header class="header">
-        <nav class="navbar navbar-inverse" role="banner">
-            <br>
-            <label for="" class="brand" href="i../super_admin/index.php">
-                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
+    <section class="title">
 
-
-            </label>
-
-            <div class="collapse navbar-collapse navbar-right">
-                <ul class="nav navbar-nav">
-
-
-                    <form method="POST">
-
-
-
-
-                        <tr>
-
-                            <td colspan='2' align="center">
-
-
-                                <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
-                            </td>
-                            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
-
-                        </tr>
-                    </form>
-
-
-
-
-                </ul>
-            </div>
-
-
-        </nav>
-
-    </header>
-    <br>
-    <br>
-    <br>
-    <br>
+        <h1>Formulario de Afiliacion <?php echo $usua['tipo_usuario'] ?></h1>
+    </section>
 
     <table class="centrar">
         <form method="POST" name="frmadd" autocomplete="off">
@@ -157,43 +127,42 @@ if (isset($_POST['btncerrar'])) {
             </tr>
 
 
-            <tr>
+             <tr>
 
-                <td>Id Mascota</td>
-                <td>
-                    <select name="id_masc">
-                        <option value=""> Seleccione una opción </option>
-                        <?php
-                        do {
+                    <td >Id Mascota</td>
+                    <td>
+                        <select name ="id_masc">
+                        <option value = ""> Seleccione una opción </option>
+                        <?php 
+                        do {                        
                         ?>
-                            <option value="<?php echo ($usua1['id_mascota']) ?>"> <?php echo ($usua1['id_mascota']) ?>
-                            <?php
+                        <option value = "<?php echo ($usua1['id_mascota']) ?>"> <?php echo ($usua1['id_mascota']) ?> 
+                        <?php 
+                        }while ($usua1= mysqli_fetch_assoc($usuarios1));
+                    
+                        ?>
 
-                        } while ($usua1 = mysqli_fetch_assoc($usuarios1));
+                        </select>
+                    
+                        
+                    </td>
+                            
+                </tr>
 
-                            ?>
+                <tr>
 
-                    </select>
-
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td colspan="2">&nbsp; </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
-                <input type="hidden" name="btnguardar" value="frmadd">
+                    <td colspan="2">&nbsp; </td>
 
 
-            </tr>
+                </tr>
+
+                <tr>
+
+                    <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
+                    <input type="hidden" name="btnguardar" value="frmadd">
+
+
+                </tr> 
 
 
 

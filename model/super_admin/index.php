@@ -8,20 +8,7 @@ $usua = mysqli_fetch_assoc($usuarios);
 
 
 ?>
-<form method="POST">
 
-    <tr>
-        <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
-    </tr>
-    <tr><br>
-        <td colspan='2' align="center">
-
-
-            <input type="submit" value="Cerrar sesión" name="btncerrar" />
-        </td>
-        <input type="submit" formaction="../administrador/index.php" value="Regresar" />
-    </tr>
-</form>
 
 <?php
 
@@ -48,14 +35,61 @@ if (isset($_POST['btncerrar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <title>taller</title>
+    <link rel="stylesheet" href="../../controller/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../../controller/image/logo-pet-1.png"">
+    <link rel=" stylesheet" href="../../controller/css/style.css">
+    <link rel=" stylesheet" href="estilos.css">
+    <title>PetPalace</title>
 </head>
 
 <body>
-    <section class="title">
-        <h1>INTERFAZ <?php echo $usua['tipo_usuario'] ?></h1>
-    </section>
+
+
+
+
+    <header class="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <br>
+            <label for="" class="brand" href="i../super_admin/index.php">
+                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
+
+
+            </label>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+
+
+                    <form method="POST">
+
+                        <tr>
+                            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
+                        </tr>
+                        <tr>
+
+                            <td colspan='2' align="center">
+
+
+                                <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
+                            </td>
+
+                        </tr>
+                    </form>
+
+
+
+
+                </ul>
+            </div>
+
+
+        </nav>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <nav class="navegacion">
 
@@ -71,14 +105,14 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="personas.php">
-                    <img src="img/ejecucion.png" alt="" class="imagen">
+                    <img src="img/persona.PNG" alt="" class="imagen">
                     <span class="text-item">Crear Persona</span>
                     <span class="down-item"></span>
                 </a>
             </li>
 
             <li>
-                <a href="estado.php">
+                <a href="esta2.php">
                     <img src="img/implementar.jpg" alt="" class="imagen">
                     <span class="text-item">Estado</span>
                     <span class="down-item"></span>
@@ -87,7 +121,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="mascota.php">
-                    <img src="img/planear.png" alt="" class="imagen">
+                    <img src="img/crear_mascota.png" alt="" class="imagen">
                     <span class="text-item">Mascota</span>
                     <span class="down-item"></span>
                 </a>
@@ -95,7 +129,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="tipo_mascota.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/gatos-perros.png" alt="" class="imagen">
                     <span class="text-item">Tipo Mascota</span>
                     <span class="down-item"></span>
                 </a>
@@ -134,9 +168,9 @@ if (isset($_POST['btncerrar'])) {
             </li>
 
             <li>
-                <a href="#">
+                <a href="lista_mascota.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">OPCION 10</span>
+                    <span class="text-item">lista de mascotas</span>
                     <span class="down-item"></span>
                 </a>
             </li>
