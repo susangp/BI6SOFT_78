@@ -57,7 +57,7 @@ header {
 }
 
 nav.navbar {
-    background-color: #fcfdfd;
+    background-color: #c5e8f4;
    
 }
 
@@ -212,7 +212,7 @@ main .sobre-nosotros{
 }
 
 .cards .card{
-    background: #4d0686;
+    background: #c5e8f4;
     display: flex;
     width: 46%;
     height: 200px;
@@ -276,7 +276,7 @@ main .sobre-nosotros{
 /* footer */
 
 footer{
-    background: #414141;
+    background: #c5e8f4;
     padding: 60px 0 30px 0;
     margin: auto;
     overflow: hidden;
