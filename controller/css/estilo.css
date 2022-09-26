@@ -296,8 +296,8 @@ footer{
 }
 
 .content-foo h4{
-    color: #fff;
-    border-bottom: 3px solid #af20d3;
+    color: #7a7a7a;
+    border-bottom: 3px solid #ff3a5f;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -310,7 +310,7 @@ footer{
     text-align: center;
     font-size: 24px;
     margin: 20px 0 0 0;
-    color: #9e9797;
+    color: #7a7a7a;
 }
 
 @media screen and (max-width:900px){
