@@ -18,7 +18,7 @@ body {
 
 .brand img {
     width: 220px;
-    height: 85px;
+    height: 130px;
     transform: translate(-243%, -23%);
     
 
@@ -34,8 +34,8 @@ body {
 
 
 .titulo {
-    color: #1bc3ea;
-    font-size: 30px;
+    color: #7a7a7a;
+    font-size: 40px;
     text-align: center;
     margin-bottom: 60px;
 }
