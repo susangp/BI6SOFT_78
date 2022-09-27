@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion = '" . $_GET['id'] . "'";
+$sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion AND  persona.identificacion = '" . $_GET['id'] . "'";
 $query = mysqli_query($mysqli, $sql);
 $result = mysqli_fetch_assoc($query)
 ?>
@@ -18,7 +18,7 @@ if (isset($_POST["update"])) {
     $tipo_masc = $_POST['tipo_masc'];
     echo $nom_mas, $color, $raza, $identificacion, $id_tip_masc, $tipo_masc;
 
-    $sql_update = "UPDATE mascota SET nom_mas = '$nom_mas', color = '$color', raza = '$raza', identificacion = '$identificacion', id_tipo_masc = '$id_tip_masc', tipo_masc = '$tipo_masc' WHERE identificacion = '" . $_GET['id'] . "'";
+    $sql_update = "UPDATE mascota, tipo_mascotas, persona SET nom_mas = '$nom_mas', color = '$color', raza = '$raza', identificacion = '$identificacion', id_tipo_masc = '$id_tip_masc', tipo_masc = '$tipo_masc' WHERE identificacion = '" . $_GET['id'] . "'";
     $cs = mysqli_query($mysqli, $sql_update);
     echo '<script>alert (" Actualización Exitosa ");</script>';
 } elseif (isset($_POST["delete"])) {
@@ -70,23 +70,23 @@ if (isset($_POST["update"])) {
             </tr>
             <tr>
                 <td> id tipo mascota </td>
-                <td> <input name='id_tipo_masc' value="<?php echo $result['identificacion'] ?>"> </td>
+                <td> <input name='id_tipo_masc' value="<?php echo $result['id_tipo_masc'] ?>"> </td>
             </tr>
 
             <tr>
                 <td>Tipo mascota</td>
-                <td> <select name="tipo_mascotas">
-                        <option value="<?php echo $result['id_tipo_masc'] ?>"> <?php echo $result['tipo_mascotas'] ?> </option>
+                <td> <select name="tipo_masc">
+                        <option value="<?php echo $result['id_tipo_masc'] ?>"> <?php echo $result['tipo_masc'] ?> </option>
                         <?php
                         $sql1 = "SELECT * FROM tipo_mascotas";
                         $usuarios1 = mysqli_query($mysqli, $sql1);
                         $usua1 = mysqli_fetch_assoc($usuarios1);
                         do {
                         ?>
-                            <option value="<?php echo ($usua1['id_tipo_masc']) ?>"> <?php echo ($usua1['id_tipo_masc']) ?>
-                            <?php
+
+                        <?php
                         } while ($usua1 = mysqli_fetch_assoc($usuarios1));
-                            ?>
+                        ?>
                     </select></td>
             </tr>
 

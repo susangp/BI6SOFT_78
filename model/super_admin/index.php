@@ -176,9 +176,9 @@ if (isset($_POST['btncerrar'])) {
             </li>
 
             <li>
-                <a href="#">
+                <a href="visita.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">OPCION 11</span>
+                    <span class="text-item">Visitas</span>
                     <span class="down-item"></span>
                 </a>
             </li>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); //conexion a la base de datos
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
 $sql = "SELECT * FROM mascota, tipo_mascotas WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc";
@@ -11,7 +11,7 @@ $usua = mysqli_fetch_assoc($usuarios);
 
 <?php
 
-if (isset($_POST['btncerrar'])) {
+if (isset($_POST['btncerrar'])) { //para cerrar sesion
     session_destroy();
 
 
@@ -88,6 +88,7 @@ if (isset($_POST['btncerrar'])) {
         <form method="GET" name="frmconsulta" autocomplete="off">
             <tr>
                 <td>&nbsp;</td>
+                <!--para deja espacio-->
 
                 <td>Nombres mascota</td>
                 <td>Color mascota</td>
@@ -98,12 +99,14 @@ if (isset($_POST['btncerrar'])) {
                 <td>Accción</td>
                 <td>&nbsp;</td>
             </tr>
+
             <?php
-            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion";
-            $i = 0;
-            $query = mysqli_query($mysqli, $sql);
+            //consulta a la base de datos
+            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion"; //consulta a las tablas y enlasamos las tablas por los valore puentes
+            $i = 0; //contador
+            $query = mysqli_query($mysqli, $sql); //llamamos la variable que tiene la conexion
             while ($result = mysqli_fetch_assoc($query)) {
-                $i++;
+                $i++; //incrementamos la i de 1 a 1 
             ?>
                 <tr>
                     <td><?php echo $i ?></td>
