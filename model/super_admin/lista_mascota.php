@@ -1,8 +1,8 @@
 <?php
-session_start();
+session_start(); //conexion a la base de datos
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
+$sql = "SELECT * FROM mascota, tipo_mascotas WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
@@ -11,7 +11,7 @@ $usua = mysqli_fetch_assoc($usuarios);
 
 <?php
 
-if (isset($_POST['btncerrar'])) {
+if (isset($_POST['btncerrar'])) { //para cerrar sesion
     session_destroy();
 
 
@@ -32,7 +32,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <title>PetPalace</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
@@ -51,9 +51,7 @@ if (isset($_POST['btncerrar'])) {
 
                     <form method="POST">
 
-                        <tr>
-                            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
-                        </tr>
+
 
 
 
@@ -90,31 +88,36 @@ if (isset($_POST['btncerrar'])) {
         <form method="GET" name="frmconsulta" autocomplete="off">
             <tr>
                 <td>&nbsp;</td>
+                <!--para deja espacio-->
+
+                <td>Nombres mascota</td>
+                <td>Color mascota</td>
+                <td>Raza</td>
                 <td>Identificacion</td>
-                <td>Nombres</td>
-                <td>Apellidos</td>
-                <td>Dirección</td>
-                <td>Tipo de Usuario</td>
-                <td>Estado</td>
+                <td>id tipo mascota</td>
+                <td> tipo mascota</td>
                 <td>Accción</td>
                 <td>&nbsp;</td>
             </tr>
+
             <?php
-            $sql = "SELECT * FROM persona, tipo_usuario, estado WHERE persona.id_tip_usuario = tipo_usuario.id_tip_usuario AND persona.id_estado = estado.id_estado";
-            $i = 0;
-            $query = mysqli_query($mysqli, $sql);
+            //consulta a la base de datos
+            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion"; //consulta a las tablas y enlasamos las tablas por los valore puentes
+            $i = 0; //contador
+            $query = mysqli_query($mysqli, $sql); //llamamos la variable que tiene la conexion
             while ($result = mysqli_fetch_assoc($query)) {
-                $i++;
+                $i++; //incrementamos la i de 1 a 1 
             ?>
                 <tr>
                     <td><?php echo $i ?></td>
+                    <td><?php echo $result['nom_mas'] ?></td>
+                    <td><?php echo $result['color_mas'] ?></td>
+                    <td><?php echo $result['raza'] ?></td>
                     <td><?php echo $result['identificacion'] ?></td>
-                    <td><?php echo $result['nombres'] ?></td>
-                    <td><?php echo $result['apellidos'] ?></td>
-                    <td><?php echo $result['direccion'] ?></td>
-                    <td><?php echo $result['tipo_usuario'] ?></td>
-                    <td><?php echo $result['tipo_estado'] ?></td>
-                    <td><a href="?id=<?php echo $result['identificacion'] ?>" onclick="window.open('update.php?id=<?php echo $result['identificacion'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
+                    <td><?php echo $result['id_tipo_masc'] ?></td>
+                    <td><?php echo $result['tipo_masc'] ?></td>
+
+                    <td><a href="?id=<?php echo $result['identificacion'] ?>" onclick="window.open('update_masc.php?id=<?php echo $result['identificacion'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
                     <td>&nbsp;</td>
                 </tr>
 

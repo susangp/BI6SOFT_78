@@ -36,13 +36,10 @@ if ($_POST["inicio"]) {
 		}
 		/// si es un vendedor
 		elseif ($_SESSION['id_tip_usuario'] == 2) {
-			header("Location: ../model/administrador/index.php");
+			header("Location: ../model/veterinario/index.php");
 			exit();
 		} elseif ($_SESSION['id_tip_usuario'] == 3) {
-			header("Location: ../model/propietario/index1.php");
-			exit();
-		} elseif ($_SESSION['id_tip_usuario'] == 4) {
-			header("Location: ../model/veterinario/index1.php");
+			header("Location: ../model/propietario/index.php");
 			exit();
 		}
 	} else {

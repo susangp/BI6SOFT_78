@@ -57,7 +57,20 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 
 ?>
+<form method="POST">
 
+    <tr>
+        <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
+    </tr>
+    <tr><br>
+        <td colspan='2' align="center">
+
+
+            <input type="submit" value="Cerrar sesión" name="btncerrar" />
+        </td>
+        <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
+    </tr>
+</form>
 
 <?php
 
@@ -84,60 +97,15 @@ if (isset($_POST['btncerrar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../controller/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
-    <link rel=" stylesheet" href="../../controller/css/style.css">
-    <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <link rel="stylesheet" href="estilos.css">
+    <title>Personas</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
+    <section class="title">
 
-
-    <header class="header">
-        <nav class="navbar navbar-inverse" role="banner">
-            <br>
-            <label for="" class="brand" href="i../super_admin/index.php">
-                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
-
-
-            </label>
-
-            <div class="collapse navbar-collapse navbar-right">
-                <ul class="nav navbar-nav">
-
-
-                    <form method="POST">
-
-                        <tr>
-                            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
-                        </tr>
-                        <tr>
-
-                            <td colspan='2' align="center">
-
-
-                                <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
-                            </td>
-                            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
-
-                        </tr>
-                    </form>
-
-
-
-
-                </ul>
-            </div>
-
-
-        </nav>
-
-    </header>
-    <br>
-    <br>
-    <br>
-    <br>
+        <h1>Formulario de Creacion Personas <?php echo $usua['tipo_usuario'] ?></h1>
+    </section>
 
     <table class="centrar">
         <form method="POST" name="frmadd" autocomplete="off">
