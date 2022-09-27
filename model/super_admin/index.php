@@ -144,17 +144,17 @@ if (isset($_POST['btncerrar'])) {
             </li>
 
             <li>
-                <a href="#">
+                <a href="medicamentos.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">OPCION 7</span>
+                    <span class="text-item">Medicamentos</span>
                     <span class="down-item"></span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="historia_clinica.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">OPCION 8</span>
+                    <span class="text-item">Historia clínica</span>
                     <span class="down-item"></span>
                 </a>
             </li>
