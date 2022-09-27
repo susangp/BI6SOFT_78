@@ -7,7 +7,10 @@ $sql = "SELECT * FROM medicamentos WHERE id_medic = '" . $_SESSION['identificaci
 $mascota = mysqli_query($mysqli, $sql);
 $masc = mysqli_fetch_assoc($mascota);
 
-
+//Consulta para personas
+$sql3 = "SELECT * FROM persona" ;
+$usuarios3 = mysqli_query($mysqli, $sql3);
+$usua3 = mysqli_fetch_assoc($usuarios3);
 ?>
 
 <?php
@@ -45,7 +48,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
 <form method="POST">
 
     <tr>
-        <td colspan='2' align="center"><?php echo $masc['nombres']?></td>
+        <td colspan='2' align="center"><?php echo $usua3['nombres']?></td>
     </tr>
 <tr><br>
     <td colspan='2' align="center">
