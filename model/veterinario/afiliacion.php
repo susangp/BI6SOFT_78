@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota,afiliacion WHERE id_afilia = '" . $_SESSION['identificacion'] . "' AND mascota.id_mascota = afiliacion.id_mascota";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
