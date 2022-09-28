@@ -81,12 +81,32 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 ?>
 
-
 <?php
 if (isset($_POST['btncerrar'])) {
     session_destroy();
     header('location: ../../index.html');
 }
+
+<form method="POST">
+
+    <tr>
+        
+    </tr>
+<tr><br>
+    <td colspan='2' align="center">    
+    
+        <input type="submit" value="Cerrar sesión" name="btncerrar" /></td>
+        <input type="submit" formaction="../administrador/index.php" value="Regresar" />
+    </tr>
+</form>
+
+<?php 
+if(isset($_POST['btncerrar']))
+{
+	session_destroy();   
+    header('location: ../../index.html');
+}	
+
 ?>
 </div>
 
