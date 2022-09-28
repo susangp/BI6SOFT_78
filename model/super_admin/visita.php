@@ -89,7 +89,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 <?php
 if (isset($_POST['btncerrar'])) {
     session_destroy();
-    header('location: ../../index2.html');
+    header('location: ../../index.html');
 }
 ?>
 </div>
