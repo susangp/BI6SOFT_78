@@ -81,12 +81,39 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 ?>
 
+<<<<<<< HEAD:model/veterinario/visita_vet.php
 
+=======
+>>>>>>> 3b8ee60fc668a1e284860f5c7e256164fd5bfe6a:model/veterinario/visita.php
 <?php
 if (isset($_POST['btncerrar'])) {
     session_destroy();
     header('location: ../../index.html');
 }
+<<<<<<< HEAD:model/veterinario/visita_vet.php
+=======
+
+<form method="POST">
+
+    <tr>
+        
+    </tr>
+<tr><br>
+    <td colspan='2' align="center">    
+    
+        <input type="submit" value="Cerrar sesión" name="btncerrar" /></td>
+        <input type="submit" formaction="../administrador/index.php" value="Regresar" />
+    </tr>
+</form>
+
+<?php 
+if(isset($_POST['btncerrar']))
+{
+	session_destroy();   
+    header('location: ../../index.html');
+}	
+
+>>>>>>> 3b8ee60fc668a1e284860f5c7e256164fd5bfe6a:model/veterinario/visita.php
 ?>
 </div>
 
