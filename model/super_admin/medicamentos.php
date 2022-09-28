@@ -3,14 +3,10 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM medicamentos WHERE id_medic = '" . $_SESSION['identificacion'] . "' ";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $mascota = mysqli_query($mysqli, $sql);
 $masc = mysqli_fetch_assoc($mascota);
 
-//Consulta para personas
-$sql3 = "SELECT * FROM persona" ;
-$usuarios3 = mysqli_query($mysqli, $sql3);
-$usua3 = mysqli_fetch_assoc($usuarios3);
 ?>
 
 <?php
@@ -21,7 +17,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
     $fila = mysqli_fetch_assoc ($query);
 
     if ($fila) {
-        echo '<script>alert (" Mascota ya existe ");</script>';
+        echo '<script>alert (" Medicamento ya existe ");</script>';
         echo '<script>window.location="medicamentos.php"</script>';
 
         
@@ -45,37 +41,15 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
 
 
 ?>
-<form method="POST">
-
-    <tr>
-        <td colspan='2' align="center"><?php echo $usua3['nombres']?></td>
-    </tr>
-<tr><br>
-    <td colspan='2' align="center">
-    
-    
-        <input type="submit" value="Cerrar sesión" name="btncerrar" /></td>
-        <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
-    </tr>
-</form>
-
 <?php 
 
 if(isset($_POST['btncerrar']))
 {
 	session_destroy();
-
-   
-    header('location: ../../index2.html');
+    header('location: ../../index.html');
 }
 	
 ?>
-
-</div>
-
-</div>
-
-
 
 
 <!DOCTYPE html>
@@ -84,54 +58,87 @@ if(isset($_POST['btncerrar']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="../../controller/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
+    <link rel=" stylesheet" href="../../controller/css/style.css">
+    <link rel=" stylesheet" href="estilos.css">
     <title>medicamentos</title>
 </head>
     <body onload="frmadd.tip_mascota.focus()">
-        <section class="title" >
+    <header class="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <br>
+            <label for="" class="brand" href="i../super_admin/index.php">
+                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
 
-            <h1>Formulario de Medicamentos </h1>
-        </section>
+
+            </label>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+
+
+                    <form method="POST">
+
+
+                        <tr>
+
+                            <td colspan='2' align="center">
+
+
+                                <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
+                            </td>
+                            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
+
+                        </tr>
+                    </form>
+
+
+
+
+                </ul>
+            </div>
+
+
+            </nav>
+
+        </header>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <table class="centrar" >
             <form method="POST" name="frmadd" autocomplete="off">
 
-                <tr>
+            <tr>
 
-                    <td colspan="2">Medicamentos </td>
+                <td colspan="2">Formulario de Medicamentos </td>
 
+            </tr>
 
-                </tr>
+            <tr>
 
-                <tr>
+                <td>Id Medicamentos</td>
+                <td><input type="text" name="id_medic" placeholder="Ingrese código medicamento" style="text-transform: uppercase;"> </td>
+            </tr>
 
-                    <td >Id Medicamentos</td>
-                    <td><input type="text" name="id_medic" placeholder="Ingrese el código" style="text-transform: uppercase;"> </td>
+            <tr>
 
-                </tr>
+                <td>Nombre del Medicamento</td>
+                <td><input type="text" name="descripcion" placeholder="Ingrese nombre medicamento" style="text-transform: uppercase;"> </td>
+            </tr>
 
+            <tr>
+                <td colspan="2">&nbsp; </td>
+            </tr>
 
-                 <tr>
-
-                    <td >Descripción</td>
-                    <td><input type="text" name="descripcion" placeholder="Ingrese una descripcion" style="text-transform: uppercase;"> </td>
-
-
-                </tr>
-
-
-                <tr>
-
-                    <td colspan="2">&nbsp; </td>
-
-                </tr>
-
-                <tr>
+            <tr>
 
                     <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
                     <input type="hidden" name="btnguardar" value="frmadd">
 
-                </tr>                       
+            </tr>                       
 
             </form>
 

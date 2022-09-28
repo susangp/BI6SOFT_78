@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota, tipo_mascotas WHERE id_mascota = '" . $_SESSION['identificacion'] . "' AND mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $mascota = mysqli_query($mysqli, $sql);
 $masc = mysqli_fetch_assoc($mascota);
 
@@ -41,18 +41,10 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 if (isset($_POST['btncerrar'])) {
     session_destroy();
-
-
     header('location: ../../index.html');
 }
 
 ?>
-
-</div>
-
-</div>
-
-
 
 
 <!DOCTYPE html>
@@ -66,7 +58,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <title>Tipo Mascota</title>
 </head>
 
 <body onload="frmadd.tip_mascota.focus()">
@@ -122,15 +114,6 @@ if (isset($_POST['btncerrar'])) {
 
 
             </tr>
-
-            <tr>
-
-                <td>Id Tipo</td>
-                <td><input type="text" readonly> </td>
-
-
-            </tr>
-
 
             <tr>
 

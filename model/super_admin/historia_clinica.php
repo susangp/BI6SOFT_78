@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM historia_clinica,visitas, medicamentos WHERE id_med_visi = '" .$_SESSION['identificacion']. "'AND visitas.id_visita = historia_clinica.id_visita AND medicamentos.id_medic = historia_clinica.id_medic";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 
@@ -39,17 +39,16 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     if ($fila) {
         echo '<script>alert (" El usuario ya existe ");</script>';
         echo '<script>window.location="agreg_usu.php"</script>';
-    } elseif ($_POST['id_med_visi'] == "" || $_POST['observ'] == "" || $_POST['id_visita'] == "" || $_POST['id_medic'] == "" ) {
+    } elseif ($_POST['id_med_visi'] == "" || $_POST['id_visita'] == "" || $_POST['id_medic'] == "" ) {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
         echo '<script>window.location="agreg_usu.php"</script>';
     } else {
 
         $idMed = $_POST['id_med_visiPOST']; 
-        $obs= $_POST['observPOST'];
         $idVisita = $_POST['id_visitaPOST']; 
         $idMedic = $_POST['id_medicPOST']; 
-        $sqladd = " INSERT INTO historia_clinica (id_med_visi,observ,id_visita,id_medic) VALUES ($idMed,'$obs','$idVisita','$idMedic') ";
+        $sqladd = " INSERT INTO historia_clinica (id_med_visi, id_visita,id_medic) VALUES ($idMed,'$idVisita','$idMedic') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
         echo '<script>window.location="agreg_usu.php"</script>';
@@ -147,14 +146,7 @@ if (isset($_POST['btncerrar'])) {
 
 
             </tr>
-            <!-- INGRESO CAMPO observ VARCHAR (100) -->
-            <tr>
-
-                <td>Observaciones</td>
-                <td><input type="text" name="observPOST" placeholder="Ingrese observaciones" readonly> </td>
-
-
-            </tr>
+           
             <!-- INGRESO CAMPO id_visita VARCHAR (15) -->
             <tr>
 
