@@ -22,14 +22,14 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     } elseif ($_POST['tip_usu'] == "") {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
+        echo '<script>window.location="agreg_tip_usu.php"</script>';
     } else {
 
         $tp = $_POST['tip_usu'];
         $sqladd = " INSERT INTO tipo_usuario(tipo_usuario)VALUES ('$tp') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
+        echo '<script>window.location="agreg_tip_usu.php"</script>';
     }
 }
 
@@ -124,15 +124,6 @@ if (isset($_POST['btncerrar'])) {
 
 
             </tr>
-
-            <tr>
-
-                <td>Idientificador</td>
-                <td><input type="text" readonly> </td>
-
-
-            </tr>
-
 
             <tr>
 

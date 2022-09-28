@@ -2,14 +2,14 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota, tipo_mascotas WHERE id_mascota = '" . $_SESSION['identificacion'] . "' AND mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
 
 <?php
 //Consulta para los tipos de mascotas
-$sql1 = "SELECT * FROM persona";
+$sql1 = "SELECT * FROM persona WHERE id_tip_usuario  = 3";
 $usuarios1 = mysqli_query($mysqli, $sql1);
 $usua1 = mysqli_fetch_assoc($usuarios1);
 
@@ -181,7 +181,7 @@ if (isset($_POST['btncerrar'])) {
                         <?php
                         do {
                         ?>
-                            <option value="<?php echo ($usua1['identificacion']) ?>"> <?php echo ($usua1['identificacion']) ?>
+                            <option value="<?php echo ($usua1['identificacion']) ?>"> <?php echo ($usua1['nombres']) ?> <?php echo ($usua1['apellidos']) ?>
                             <?php
                         } while ($usua1 = mysqli_fetch_assoc($usuarios1));
 

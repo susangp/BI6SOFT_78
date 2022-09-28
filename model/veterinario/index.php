@@ -96,9 +96,9 @@ if (isset($_POST['btncerrar'])) {
         <ul class="menu wrapper">
 
             <li class="first-item">
-                <a href="agreg_tip_usu.php">
+                <a href="visita_vet.php">
                     <img src="img/analisis.png" alt="" class="imagen">
-                    <span class="text-item">Crear Tipo de Usuario</span>
+                    <span class="text-item">Crear Visita</span>
                     <span class="down-item"></span>
                 </a>
             </li>

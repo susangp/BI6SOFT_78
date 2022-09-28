@@ -101,6 +101,7 @@ if (isset($_POST['btncerrar'])) {
             </tr>
             <?php
             $sql = "SELECT * FROM persona, tipo_usuario, estado WHERE persona.id_tip_usuario = tipo_usuario.id_tip_usuario AND persona.id_estado = estado.id_estado";
+            //$sql = "SELECT * FROM persona, tipo_usuario, estado WHERE persona.id_tip_usuario = tipo_usuario.id_tip_usuario AND persona.id_estado = estado.id_estado";
             $i = 0;
             $query = mysqli_query($mysqli, $sql);
             while ($result = mysqli_fetch_assoc($query)) {
