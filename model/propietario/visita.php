@@ -20,7 +20,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
     $fila = mysqli_fetch_assoc ($query);
 
     if ($fila) {
-        echo '<script>alert (" El usuario ya existe ");</script>';
+        echo '<script>alert (" La visita ya existe ");</script>';
         echo '<script>window.location="visita.php"</script>';
 
         
@@ -104,7 +104,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")){
 if(isset($_POST['btncerrar']))
 {
 	session_destroy();   
-    header('location: ../../index2.html');
+    header('location: ../../index.html');
 }	
 ?>
 </div>
@@ -121,7 +121,7 @@ if(isset($_POST['btncerrar']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
-    <title>Personas</title>
+    <title>Visitas</title>
 </head>
     <body onload="frmadd.visit.focus()">
         <section class="title" >

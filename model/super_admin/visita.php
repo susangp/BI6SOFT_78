@@ -2,11 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM persona, estado, mascota,visitas 
-WHERE id_visita = '" . $_SESSION['identificacion'] . "' 
-AND persona.identificacion = visitas.identificacion 
-AND visitas.id_mascota = mascota.id_mascota 
-AND visitas.id_estado = estado.id_estado";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $visita = mysqli_query($mysqli, $sql);
 $visit = mysqli_fetch_assoc($visita);
 ?>
@@ -53,7 +49,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         $id_estado = $_POST['id_estado'];
 
         $sqladd = " INSERT INTO 
-        visita (id_visita, 
+        visitas (id_visita, 
                 fecha_visita,
                 hora_visita,
                 temperatura,
@@ -211,7 +207,7 @@ if (isset($_POST['btncerrar'])) {
                         <option value=""> Seleccione una opción </option>
                         <?php
                         //Consulta identificacion
-                        $sql1 = "SELECT * FROM persona WHERE id_tip_usuario=3 ";
+                        $sql1 = "SELECT * FROM persona WHERE id_tip_usuario=2 ";
                         $ident = mysqli_query($mysqli, $sql1);
                         $ident_persona = mysqli_fetch_assoc($ident);
                         do {
@@ -231,12 +227,12 @@ if (isset($_POST['btncerrar'])) {
                         <option value=""> Seleccione una opción </option>
                         <?php
                         //Consulta para identificacion mascota
-                        $sql2 = "SELECT * FROM tipo_mascotas";
+                        $sql2 = "SELECT * FROM mascota";
                         $mascota = mysqli_query($mysqli, $sql2);
                         $iden_mascota = mysqli_fetch_assoc($mascota);
                         do {
                         ?>
-                            <option value="<?php echo ($iden_mascota['id_tipo_masc']) ?>"> <?php echo ($iden_mascota['tipo_masc']) ?>
+                            <option value="<?php echo ($iden_mascota['id_mascota']) ?>"> <?php echo ($iden_mascota['nom_mas']) ?>
                             <?php
                         } while ($iden_mascota = mysqli_fetch_assoc($mascota));
                             ?>
@@ -250,7 +246,7 @@ if (isset($_POST['btncerrar'])) {
                         <option value=""> Seleccione una opción </option>
                         <?php
                         //Consulta para los tipos de estados
-                        $sql3 = "SELECT * FROM estado where id_estado < 3";
+                        $sql3 = "SELECT * FROM estado where id_estado >= 3";
                         $estado = mysqli_query($mysqli, $sql3);
                         $iden_estado = mysqli_fetch_assoc($estado);
                         do {
