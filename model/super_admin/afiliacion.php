@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota,afiliacion WHERE id_afilia = '" . $_SESSION['identificacion'] . "' AND mascota.id_mascota = afiliacion.id_mascota";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
@@ -43,7 +43,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         $sqladd = " INSERT INTO afiliacion (id_afilia, fecha_afilia, id_mascota) VALUES ('$id_afilia ', '$fecha_afilia', '$id_mascota') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="personas.php"</script>';
+        echo '<script>window.location="afiliacion.php"</script>';
     }
 }
 
@@ -138,15 +138,6 @@ if (isset($_POST['btncerrar'])) {
 
 
             </tr>
-
-            <tr>
-
-                <td>id_afiliacion</td>
-                <td><input type="text" name="id_afiliacion" placeholder="Ingrese id_afiliacion" readonly> </td>
-
-
-            </tr>
-
 
             <tr>
 

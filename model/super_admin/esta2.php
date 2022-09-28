@@ -8,42 +8,26 @@ $usua = mysqli_fetch_assoc($usuarios);
 ?>
 
 <?php
-
-//Consulta para los tipos de usuarios
-$sql1 = "SELECT * FROM estado";
-$usuarios1 = mysqli_query($mysqli, $sql1);
-$usua1 = mysqli_fetch_assoc($usuarios1);
-
-
-
-
-?>
-
-<?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
-    $tp = $_POST['id_estado'];
-    $sqladd = " SELECT * FROM estado WHERE id_estado ='$tp' ";
+    $tp = $_POST['tipo_estado'];
+    $sqladd = " SELECT * FROM estado WHERE tipo_estado ='$tp' ";
     $query = mysqli_query($mysqli, $sqladd);
     $fila = mysqli_fetch_assoc($query);
 
     if ($fila) {
-        echo '<script>alert (" El usuario ya existe ");</script>';
+        echo '<script>alert (" El estado ya existe ");</script>';
         echo '<script>window.location="esta2.php"</script>';
-    } elseif ($_POST['id_estado'] == "" || $_POST['tipo_estado'] == "") {
+    } elseif ($_POST['tipo_estado'] == "") {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
         echo '<script>window.location="esta2.php"</script>';
     } else {
 
-        $id_estado = $_POST['id_estado'];
-        $tipo_estado = $_POST['tipo_estado'];
-
-
-
-        $sqladd = " INSERT INTO estado (id_estado, tipo_estado VALUES ('$id_estado', '$tipo_estado') ";
+        $tp = $_POST['tipo_estado'];
+        $sqladd = " INSERT INTO estado (tipo_estado) VALUES ('$tp') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="personas.php"</script>';
+        echo '<script>window.location="esta2.php"</script>';
     }
 }
 
@@ -135,7 +119,7 @@ if (isset($_POST['btncerrar'])) {
             <tr>
 
                 <td colspan="2">
-                    <h1>Crear estados</h1>
+                    <h1>Crear Estados</h1>
                 </td>
 
 
@@ -143,36 +127,8 @@ if (isset($_POST['btncerrar'])) {
 
             <tr>
 
-                <td>id_estado</td>
-                <td><input type="text" name="id_estado" placeholder="Ingrese id estado" readonly> </td>
-
-
-            </tr>
-
-
-
-
-
-            <tr>
-
-                <td>Tipo mascota</td>
-                <td>
-                    <select name="tipo_estado">
-                        <option value=""> Seleccione una opción </option>
-                        <?php
-                        do {
-                        ?>
-                            <option value="<?php echo ($usua1['id_tipo_masc']) ?>"> <?php echo ($usua1['tipo_estado']) ?>
-                            <?php
-
-                        } while ($usua1 = mysqli_fetch_assoc($usuarios1));
-
-                            ?>
-
-                    </select>
-
-
-                </td>
+                <td>Estado</td>
+                <td><input type="text" name="tipo_estado" placeholder="Ingrese Estado" style="text-transform: uppercase;"> </td>
 
             </tr>
 
