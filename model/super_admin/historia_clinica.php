@@ -32,26 +32,26 @@ $usua3 = mysqli_fetch_assoc($usuarios3);
 <?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     $idMed = $_POST['id_med_visi'];
+    //$idVisita = $_POST['id_visitaPOST']; 
     $sqladd = " SELECT * FROM historia_clinica WHERE id_med_visi ='$idMed' ";
+    //$sqladd = " SELECT * FROM historia_clinica WHERE id_visitaPOST ='$idVisita' ";
     $query = mysqli_query($mysqli, $sqladd);
     $fila = mysqli_fetch_assoc($query);
 
     if ($fila) {
         echo '<script>alert (" El usuario ya existe ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
-    } elseif ($_POST['id_med_visi'] == "" || $_POST['id_visita'] == "" || $_POST['id_medic'] == "" ) {
+        echo '<script>window.location="historia_clinica.php"</script>';
+    } elseif ($_POST['id_visitaPOST'] == "" || $_POST['id_medicPOST'] == "" ) {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
+        echo '<script>window.location="historia_clinica.php"</script>';
     } else {
-
-        $idMed = $_POST['id_med_visiPOST']; 
         $idVisita = $_POST['id_visitaPOST']; 
         $idMedic = $_POST['id_medicPOST']; 
-        $sqladd = " INSERT INTO historia_clinica (id_med_visi, id_visita,id_medic) VALUES ($idMed,'$idVisita','$idMedic') ";
+        $sqladd = " INSERT INTO historia_clinica (id_visita,id_medic) VALUES ('$idVisita','$idMedic') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
+        echo '<script>window.location="historia_clinica.php"</script>';
     }
 }
 
@@ -151,15 +151,6 @@ if (isset($_POST['btncerrar'])) {
             <tr>
 
                 <td>Id visita</td>
-                <td><input type="text" name="id_visitaPOST" placeholder="Ingrese Id visita" readonly> </td>
-
-
-            </tr>
-
-<!-- ESTE CÓDIGO SE HABILITA CUANDO MÓDULO VISITAS SIRVA 
-            <tr>
-
-                <td>Id visita</td>
                 <td>
                     <select name="id_visitaPOST">
                         <option value=""> Seleccione una opción:</option>
@@ -167,7 +158,7 @@ if (isset($_POST['btncerrar'])) {
                         <?php
                         do {
                         ?>
-                            <option value="<?php echo ($usua2['id_visita']) ?>"> <?php echo ($usua2['id_visita']) ?>
+                            <option value="<?php echo ($usua2['id_visita']) ?>"> <?php echo ($usua2['id_visita']) ?><?php echo ("-") ?><?php echo ($usua2['fecha_visita']) ?>
                             <?php
 
                         } while ($usua2 = mysqli_fetch_assoc($usuarios2));
@@ -178,7 +169,7 @@ if (isset($_POST['btncerrar'])) {
 
 
                 </td>
--->
+
 
             </tr>
 
