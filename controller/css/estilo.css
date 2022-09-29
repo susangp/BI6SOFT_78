@@ -49,6 +49,15 @@ header {
 
 nav.navbar {
     background-color: #c5e8f4;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    transition: all 0.5s ease;
+    
+    
    
 }
 
@@ -56,6 +65,7 @@ nav.navbar {
 nav{
     text-align: right;
     padding: 30px 50px 0 0;
+    
 }
 
 nav > a{

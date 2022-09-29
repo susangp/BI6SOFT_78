@@ -19,6 +19,7 @@ if (isset($_POST["update"])) {
     $cs = mysqli_query($mysqli, $sql_update);
     echo '<script>alert (" Actualización Exitosa ");</script>';
 } elseif (isset($_POST["delete"])) {
+
     $sqldelete = "DELETE FROM mascota WHERE id_mascota ='" . $_GET['id'] . "'";
     $cs = mysqli_query($mysqli, $sqldelete);
     echo '<script>alert ("Registro eliminado Exitosamente ");</script>';
@@ -85,8 +86,8 @@ if (isset($_POST["update"])) {
                     </select></td>
             </tr>
 
-            
-            
+
+
             <tr>
                 <td>Tipo mascota</td>
                 <td> <select name="id_tipo_masc">
