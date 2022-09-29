@@ -68,8 +68,6 @@ if (isset($_POST['btncerrar'])) {
                         <tr>
 
                             <td colspan='2' align="center">
-
-
                                 <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
                             </td>
 
@@ -154,7 +152,7 @@ if (isset($_POST['btncerrar'])) {
             <li>
                 <a href="historia_clinica.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">Historia clínica</span>
+                    <span class="text-item">Historia Clínica</span>
                     <span class="down-item"></span>
                 </a>
             </li>
@@ -170,7 +168,7 @@ if (isset($_POST['btncerrar'])) {
             <li>
                 <a href="lista_mascota.php">
                     <img src="" alt="" class="imagen">
-                    <span class="text-item">lista de mascotas</span>
+                    <span class="text-item">Lista de Mascotas</span>
                     <span class="down-item"></span>
                 </a>
             </li>

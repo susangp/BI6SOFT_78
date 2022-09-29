@@ -81,46 +81,12 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 ?>
 
-<<<<<<< HEAD:model/veterinario/visita_vet.php
-
-=======
->>>>>>> 3b8ee60fc668a1e284860f5c7e256164fd5bfe6a:model/veterinario/visita.php
 <?php
 if (isset($_POST['btncerrar'])) {
     session_destroy();
     header('location: ../../index.html');
 }
-<<<<<<< HEAD:model/veterinario/visita_vet.php
-=======
-
-<form method="POST">
-
-    <tr>
-        
-    </tr>
-<tr><br>
-    <td colspan='2' align="center">    
-    
-        <input type="submit" value="Cerrar sesión" name="btncerrar" /></td>
-        <input type="submit" formaction="../administrador/index.php" value="Regresar" />
-    </tr>
-</form>
-
-<?php 
-if(isset($_POST['btncerrar']))
-{
-	session_destroy();   
-    header('location: ../../index.html');
-}	
-
->>>>>>> 3b8ee60fc668a1e284860f5c7e256164fd5bfe6a:model/veterinario/visita.php
 ?>
-</div>
-
-</div>
-
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -140,8 +106,8 @@ if(isset($_POST['btncerrar']))
     <header class="header">
         <nav class="navbar navbar-inverse" role="banner">
             <br>
-            <label for="" class="brand" href="i../super_admin/index.php">
-                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
+            <label for="" class="brand" href="i../veterinario/index.php">
+                <a href="../veterinario/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
 
 
             </label>
@@ -162,7 +128,7 @@ if(isset($_POST['btncerrar']))
 
                                 <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
                             </td>
-                            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
+                            <input type="submit" formaction="../veterinario/index.php" value="Regresar" />
 
                         </tr>
                     </form>
@@ -231,10 +197,9 @@ if(isset($_POST['btncerrar']))
                 <td>Veterinario</td>
                 <td>
                     <select name="identificacion">
-                        <option value=""> Seleccione una opción </option>
                         <?php
                         //Consulta identificacion
-                        $sql1 = "SELECT * FROM persona WHERE id_tip_usuario=2 ";
+                        $sql1 = "SELECT * FROM persona WHERE id_tip_usuario=2 AND identificacion = '" . $_SESSION['identificacion'] . "' ";
                         $ident = mysqli_query($mysqli, $sql1);
                         $ident_persona = mysqli_fetch_assoc($ident);
                         do {

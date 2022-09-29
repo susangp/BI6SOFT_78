@@ -7,14 +7,7 @@ $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
 
-<?php
-//Consulta para personas
-$sql1 = "SELECT * FROM persona, mascota where persona.identificacion = mascota.identificacion" ;
-$usuarios1 = mysqli_query($mysqli, $sql1);
-$usua1 = mysqli_fetch_assoc($usuarios1);
 
-
-?>
 
 <?php
 
@@ -46,8 +39,8 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
     <header class="header">
         <nav class="navbar navbar-inverse" role="banner">
             <br>
-            <label for="" class="brand" href="i../propietario/index.php">
-                <a href="../propietario/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
+            <label for="" class="brand" href="i../veterinario/index.php">
+                <a href="../veterinario/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
 
 
             </label>
@@ -70,7 +63,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
 
                                 <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
                             </td>
-                            <input type="submit" formaction="../propietario/index.php" value="Regresar" />
+                            <input type="submit" formaction="../veterinario/index.php" value="Regresar" />
 
                         </tr>
                     </form>
@@ -94,7 +87,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
     <table class="centrar" border=1>
         <form method="GET" name="frmconsulta" autocomplete="off">
             <tr>
-                <td>&nbsp;</td>
+
                 <!--para deja espacio-->
 
                 <td>Nombres mascota</td>
@@ -109,15 +102,13 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
 
             <?php
             //consulta a la base de datos
-            
-            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion AND mascota.identificacion= '" . $usua1['identificacion'] . "'"; //consulta a las tablas y enlasamos las tablas por los valore puentes
+            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion"; //consulta a las tablas y enlazamos las tablas por los valores puentes
             $i = 0; //contador
             $query = mysqli_query($mysqli, $sql); //llamamos la variable que tiene la conexion
             while ($result = mysqli_fetch_assoc($query)) {
                 $i++; //incrementamos la i de 1 a 1 
             ?>
                 <tr>
-                    <td><?php echo $i ?></td>
                     <td><?php echo $result['nom_mas'] ?></td>
                     <td><?php echo $result['color_mas'] ?></td>
                     <td><?php echo $result['raza'] ?></td>
@@ -125,7 +116,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
                     <td><?php echo $result['id_tipo_masc'] ?></td>
                     <td><?php echo $result['tipo_masc'] ?></td>
 
-                    <td><a href="?id=<?php echo $result['identificacion'] ?>" onclick="window.open('update_masc.php?id=<?php echo $result['identificacion'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
+                    <td><a href="?id=<?php echo $result['id_mascota'] ?>" onclick="window.open('update_masc.php?id=<?php echo $result['id_mascota'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
                     <td>&nbsp;</td>
                 </tr>
 
