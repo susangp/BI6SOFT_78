@@ -32,7 +32,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <title>Lsita Usuarios</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
@@ -97,7 +97,6 @@ if (isset($_POST['btncerrar'])) {
                 <td>Tipo de Usuario</td>
                 <td>Estado</td>
                 <td>Accción</td>
-                <td>&nbsp;</td>
             </tr>
             <?php
             $sql = "SELECT * FROM persona, tipo_usuario, estado WHERE persona.id_tip_usuario = tipo_usuario.id_tip_usuario AND persona.id_estado = estado.id_estado";

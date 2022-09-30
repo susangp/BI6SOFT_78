@@ -97,13 +97,21 @@ if (isset($_POST['btncerrar'])) {
 
             <li class="first-item">
                 <a href="visita_vet.php">
-                    <img src="img/analisis.png" alt="" class="imagen">
+                    <img src="img/planear.png" alt="" class="imagen">
                     <span class="text-item">Crear Visita</span>
                     <span class="down-item"></span>
                 </a>
             </li>
 
-          
+            <li class="first-item">
+                <a href="lista_mascota.php">
+                    <img src="img/tipos_mascotas.png" alt="" class="imagen">
+                    <span class="text-item">Informacion Mascotas</span>
+                    <span class="down-item"></span>
+                </a>
+            </li>
+
+                      
         </ul>
 
     </nav>
