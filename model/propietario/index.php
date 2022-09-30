@@ -96,14 +96,12 @@ if (isset($_POST['btncerrar'])) {
         <ul class="menu wrapper">
 
             <li class="first-item">
-                <a href="visita.php">
+                <a href="lista_mascota.php">
                     <img src="img/analisis.png" alt="" class="imagen">
-                    <span class="text-item">Visitas</span>
+                    <span class="text-item">Mis mascotas</span>
                     <span class="down-item"></span>
                 </a>
             </li>
-
-          
         </ul>
 
     </nav>
