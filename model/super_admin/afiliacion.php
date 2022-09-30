@@ -80,7 +80,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <title>Afiliación</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">

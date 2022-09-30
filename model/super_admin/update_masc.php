@@ -45,7 +45,7 @@ if (isset($_POST["update"])) {
 </head>
 
 <body onload="centrar();">
-    <table>
+    <table class="tabl">
         <form name="consult" method="POST" autocomplete="off">
 
             <tr>

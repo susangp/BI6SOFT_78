@@ -39,7 +39,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo-pet-1.png"">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>PetPalace</title>
+    <title>Administrador</title>
 </head>
 
 <body>
@@ -111,7 +111,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="esta2.php">
-                    <img src="img/implementar.jpg" alt="" class="imagen">
+                    <img src="img/implementar.png" alt="" class="imagen">
                     <span class="text-item">Estado</span>
                     <span class="down-item"></span>
                 </a>
@@ -127,7 +127,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="tipo_mascota.php">
-                    <img src="img/gatos-perros.png" alt="" class="imagen">
+                    <img src="img/tipos_mascotas.png" alt="" class="imagen">
                     <span class="text-item">Tipo Mascota</span>
                     <span class="down-item"></span>
                 </a>
@@ -135,7 +135,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li class="first-item">
                 <a href="afiliacion.php">
-                    <img src="img/analisis.png" alt="" class="imagen">
+                    <img src="img/afiliacion.png" alt="" class="imagen">
                     <span class="text-item">Afiliación</span>
                     <span class="down-item"></span>
                 </a>
@@ -143,7 +143,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="medicamentos.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/medicamentos.png" alt="" class="imagen">
                     <span class="text-item">Medicamentos</span>
                     <span class="down-item"></span>
                 </a>
@@ -151,7 +151,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="historia_clinica.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/ejecucion.png" alt="" class="imagen">
                     <span class="text-item">Historia Clínica</span>
                     <span class="down-item"></span>
                 </a>
@@ -159,7 +159,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="lista_usuarios.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/crear_persona.png" alt="" class="imagen">
                     <span class="text-item">Lista de Usuarios</span>
                     <span class="down-item"></span>
                 </a>
@@ -167,7 +167,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="lista_mascota.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/gato-perro.png" alt="" class="imagen">
                     <span class="text-item">Lista de Mascotas</span>
                     <span class="down-item"></span>
                 </a>
@@ -175,7 +175,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li>
                 <a href="visita.php">
-                    <img src="" alt="" class="imagen">
+                    <img src="img/planear.png" alt="" class="imagen">
                     <span class="text-item">Visitas</span>
                     <span class="down-item"></span>
                 </a>

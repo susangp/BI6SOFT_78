@@ -7,7 +7,14 @@ $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
 
+<?php
+//Consulta para personas
+$sql1 = "SELECT * FROM persona, mascota where persona.identificacion = mascota.identificacion" ;
+$usuarios1 = mysqli_query($mysqli, $sql1);
+$usua1 = mysqli_fetch_assoc($usuarios1);
 
+
+?>
 
 <?php
 
@@ -32,7 +39,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>PetPalace</title>
+    <title>Lista de Mascotas</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
@@ -116,7 +123,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
                     <td><?php echo $result['id_tipo_masc'] ?></td>
                     <td><?php echo $result['tipo_masc'] ?></td>
 
-                    <td><a href="?id=<?php echo $result['id_mascota'] ?>" onclick="window.open('update_masc.php?id=<?php echo $result['id_mascota'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
+                    <td><a href="?id=<?php echo $result['id_mascota'] ?>" onclick="window.open('read_masc.php?id=<?php echo $result['id_mascota'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Mas...</a></td>
                     <td>&nbsp;</td>
                 </tr>
 

@@ -58,7 +58,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>PetPalace</title>
+    <title>Registro Usuario</title>
 </head>
 
 <body>

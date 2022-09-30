@@ -37,7 +37,7 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>PetPalace</title>
+    <title>Lista de Mascotas</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">

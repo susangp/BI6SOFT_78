@@ -39,7 +39,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>taller</title>
+    <title>Propietario</title>
 </head>
 
 <body>
@@ -97,7 +97,7 @@ if (isset($_POST['btncerrar'])) {
 
             <li class="first-item">
                 <a href="lista_mascota.php">
-                    <img src="img/analisis.png" alt="" class="imagen">
+                    <img src="img/tipos_mascotas.png" alt="" class="imagen">
                     <span class="text-item">Mis mascotas</span>
                     <span class="down-item"></span>
                 </a>
