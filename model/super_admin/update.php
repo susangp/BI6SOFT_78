@@ -15,8 +15,6 @@ $result=mysqli_fetch_assoc($query)
         $dir = $_POST['direccion'];
         $tip_usu = $_POST['tipo_usuario'];
         $tip_est = $_POST['tipo_estado'];
-        echo $nom, $ape, $dir, $tip_usu, $tip_est;
-
         $sql_update = "UPDATE persona SET nombres = '$nom', apellidos = '$ape', direccion = '$dir', id_tip_usuario = '$tip_usu', id_estado = '$tip_est' WHERE identificacion = '".$_GET ['id']."'";
         $cs=mysqli_query($mysqli, $sql_update);
         echo '<script>alert (" Actualización Exitosa ");</script>';

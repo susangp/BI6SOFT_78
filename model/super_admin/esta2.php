@@ -3,33 +3,31 @@ session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
 $sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
-$mascota = mysqli_query($mysqli, $sql);
-$masc = mysqli_fetch_assoc($mascota);
-
-
+$usuarios = mysqli_query($mysqli, $sql) or die(mysqli_error());
+$usua = mysqli_fetch_assoc($usuarios);
 ?>
 
 <?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
-    $tp = $_POST['tip_mascota'];
-    $sqladd = " SELECT * FROM tipo_mascotas WHERE tipo_masc ='$tp' ";
+    $tp = $_POST['tipo_estado'];
+    $sqladd = " SELECT * FROM estado WHERE tipo_estado ='$tp' ";
     $query = mysqli_query($mysqli, $sqladd);
     $fila = mysqli_fetch_assoc($query);
 
     if ($fila) {
-        echo '<script>alert (" Mascota ya existe ");</script>';
-        echo '<script>window.location="tipo_mascota.php"</script>';
-    } elseif ($_POST['tip_mascota'] == "") {
+        echo '<script>alert (" El estado ya existe ");</script>';
+        echo '<script>window.location="esta2.php"</script>';
+    } elseif ($_POST['tipo_estado'] == "") {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
-        echo '<script>window.location="tipo_mascota.php"</script>';
+        echo '<script>window.location="esta2.php"</script>';
     } else {
 
-        $tp = $_POST['tip_mascota'];
-        $sqladd = " INSERT INTO tipo_mascotas (tipo_masc)VALUES ('$tp') ";
+        $tp = $_POST['tipo_estado'];
+        $sqladd = " INSERT INTO estado (tipo_estado) VALUES ('$tp') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="tipo_mascota.php"</script>';
+        echo '<script>window.location="esta2.php"</script>';
     }
 }
 
@@ -41,10 +39,18 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
 if (isset($_POST['btncerrar'])) {
     session_destroy();
+
+
     header('location: ../../index.html');
 }
 
 ?>
+
+</div>
+
+</div>
+
+
 
 
 <!DOCTYPE html>
@@ -58,10 +64,10 @@ if (isset($_POST['btncerrar'])) {
     <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
     <link rel=" stylesheet" href="../../controller/css/style.css">
     <link rel=" stylesheet" href="estilos.css">
-    <title>Tipo Mascota</title>
+    <title>taller</title>
 </head>
 
-<body onload="frmadd.tip_mascota.focus()">
+<body onload="frmadd.tip_usu.focus()">
     <header class="header">
         <nav class="navbar navbar-inverse" role="banner">
             <br>
@@ -76,6 +82,8 @@ if (isset($_POST['btncerrar'])) {
 
 
                     <form method="POST">
+
+
 
 
                         <tr>
@@ -110,23 +118,24 @@ if (isset($_POST['btncerrar'])) {
 
             <tr>
 
-                <td colspan="2">Tipos de Mascotas </td>
+                <td colspan="2">
+                    <h1>Crear Estados</h1>
+                </td>
 
 
             </tr>
 
             <tr>
 
-                <td>Tipo Mascota</td>
-                <td><input type="text" name="tip_mascota" placeholder="Ingrese tipo mascota" style="text-transform: uppercase;"> </td>
-
+                <td>Estado</td>
+                <td><input type="text" name="tipo_estado" placeholder="Ingrese Estado" style="text-transform: uppercase;"> </td>
 
             </tr>
-
 
             <tr>
 
                 <td colspan="2">&nbsp; </td>
+
 
             </tr>
 
@@ -135,11 +144,25 @@ if (isset($_POST['btncerrar'])) {
                 <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
                 <input type="hidden" name="btnguardar" value="frmadd">
 
+
             </tr>
+
+
+
+
+
 
         </form>
 
+
+
+
+
+
+
+
     </table>
+
 
 </body>
 

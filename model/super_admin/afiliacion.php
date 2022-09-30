@@ -2,7 +2,7 @@
 session_start();
 require_once("../../db/connection.php");
 include("../../controller/validarSesion.php");
-$sql = "SELECT * FROM mascota,afiliacion WHERE id_afilia = '" . $_SESSION['identificacion'] . "' AND mascota.id_mascota = afiliacion.id_mascota";
+$sql = "SELECT * FROM persona, tipo_usuario WHERE identificacion = '" . $_SESSION['identificacion'] . "' AND persona.id_tip_usuario = tipo_usuario.id_tip_usuario";
 $usuarios = mysqli_query($mysqli, $sql);
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
@@ -43,35 +43,22 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         $sqladd = " INSERT INTO afiliacion (id_afilia, fecha_afilia, id_mascota) VALUES ('$id_afilia ', '$fecha_afilia', '$id_mascota') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="personas.php"</script>';
+        echo '<script>window.location="afiliacion.php"</script>';
     }
 }
 
 
 ?>
-    <form method="POST">
-
-        <tr>
-            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
-        </tr>
-        <tr><br>
-            <td colspan='2' align="center">
 
 
-                <input type="submit" value="Cerrar sesión" name="btncerrar" />
-            </td>
-            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
-        </tr>
-    </form>
+<?php
 
-    <?php
-
-    if (isset($_POST['btncerrar'])) {
-        session_destroy();
+if (isset($_POST['btncerrar'])) {
+    session_destroy();
 
 
-        header('location: ../../index.html');
-    }
+    header('location: ../../index.html');
+}
 
 ?>
 
@@ -89,15 +76,58 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <title>AFILIACION</title>
+    <link rel="stylesheet" href="../../controller/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../../controller/image/logo y slogan.png">
+    <link rel=" stylesheet" href="../../controller/css/style.css">
+    <link rel=" stylesheet" href="estilos.css">
+    <title>taller</title>
 </head>
 
 <body onload="frmadd.tip_usu.focus()">
-    <section class="title">
+    <header class="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <br>
+            <label for="" class="brand" href="i../super_admin/index.php">
+                <a href="../super_admin/index.php"> <img src="../../controller/image/logo y slogan.png" alt=""></a>
 
-        <h1>Formulario de Afiliacion <?php echo $usua['tipo_usuario'] ?></h1>
-    </section>
+
+            </label>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+
+
+                    <form method="POST">
+
+
+
+
+                        <tr>
+
+                            <td colspan='2' align="center">
+
+
+                                <input class="btn btn-outline-primary" type="submit" value="Cerrar sesión" name="btncerrar" />
+                            </td>
+                            <input type="submit" formaction="../super_admin/index.php" value="Regresar" />
+
+                        </tr>
+                    </form>
+
+
+
+
+                </ul>
+            </div>
+
+
+        </nav>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <table class="centrar">
         <form method="POST" name="frmadd" autocomplete="off">
@@ -111,15 +141,6 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
             <tr>
 
-                <td>id_afiliacion</td>
-                <td><input type="text" name="id_afiliacion" placeholder="Ingrese id_afiliacion" readonly> </td>
-
-
-            </tr>
-
-
-            <tr>
-
                 <td>fecha afiliacion</td>
                 <td><input type="date" name="fecha" placeholder="Ingrese su fecha" style="text-transform: uppercase;"> </td>
 
@@ -127,42 +148,43 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
             </tr>
 
 
-             <tr>
+            <tr>
 
-                    <td >Id Mascota</td>
-                    <td>
-                        <select name ="id_masc">
-                        <option value = ""> Seleccione una opción </option>
-                        <?php 
-                        do {                        
+                <td>Id Mascota</td>
+                <td>
+                    <select name="id_masc">
+                        <option value=""> Seleccione una opción </option>
+                        <?php
+                        do {
                         ?>
-                        <option value = "<?php echo ($usua1['id_mascota']) ?>"> <?php echo ($usua1['id_mascota']) ?> 
-                        <?php 
-                        }while ($usua1= mysqli_fetch_assoc($usuarios1));
-                    
-                        ?>
+                            <option value="<?php echo ($usua1['id_mascota']) ?>"> <?php echo ($usua1['id_mascota']) ?>
+                            <?php
 
-                        </select>
-                    
-                        
-                    </td>
-                            
-                </tr>
+                        } while ($usua1 = mysqli_fetch_assoc($usuarios1));
 
-                <tr>
+                            ?>
 
-                    <td colspan="2">&nbsp; </td>
+                    </select>
 
 
-                </tr>
+                </td>
 
-                <tr>
+            </tr>
 
-                    <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
-                    <input type="hidden" name="btnguardar" value="frmadd">
+            <tr>
+
+                <td colspan="2">&nbsp; </td>
 
 
-                </tr> 
+            </tr>
+
+            <tr>
+
+                <td colspan="2"><input type="submit" name="btnadd" value="Guardar"> </td>
+                <input type="hidden" name="btnguardar" value="frmadd">
+
+
+            </tr>
 
 
 

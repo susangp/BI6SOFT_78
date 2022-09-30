@@ -10,26 +10,48 @@ $usua = mysqli_fetch_assoc($usuarios);
 ?>
 
 <?php
+//Consulta para los medicamentos
+$sql1 = "SELECT * FROM medicamentos";
+$usuarios1 = mysqli_query($mysqli, $sql1);
+$usua1 = mysqli_fetch_assoc($usuarios1);
+
+//Consulta para las visitas
+$sql2 = "SELECT * FROM visitas" ;
+$usuarios2 = mysqli_query($mysqli, $sql2);
+$usua2 = mysqli_fetch_assoc($usuarios2);
+
+
+//Consulta para personas
+$sql3 = "SELECT * FROM persona" ;
+$usuarios3 = mysqli_query($mysqli, $sql3);
+$usua3 = mysqli_fetch_assoc($usuarios3);
+
+
+?>
+
+<?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
-    $tp = $_POST['tip_usu'];
-    $sqladd = " SELECT * FROM tipo_usuario WHERE tipo_usuario ='$tp' ";
+    $idMed = $_POST['id_med_visi'];
+    //$idVisita = $_POST['id_visitaPOST']; 
+    $sqladd = " SELECT * FROM historia_clinica WHERE id_med_visi ='$idMed' ";
+    //$sqladd = " SELECT * FROM historia_clinica WHERE id_visitaPOST ='$idVisita' ";
     $query = mysqli_query($mysqli, $sqladd);
     $fila = mysqli_fetch_assoc($query);
 
     if ($fila) {
         echo '<script>alert (" El usuario ya existe ");</script>';
-        echo '<script>window.location="agreg_usu.php"</script>';
-    } elseif ($_POST['tip_usu'] == "") {
+        echo '<script>window.location="historia_clinica.php"</script>';
+    } elseif ($_POST['id_visitaPOST'] == "" || $_POST['id_medicPOST'] == "" ) {
 
         echo '<script>alert (" Existen campos vacios ");</script>';
-        echo '<script>window.location="agreg_tip_usu.php"</script>';
+        echo '<script>window.location="historia_clinica.php"</script>';
     } else {
-
-        $tp = $_POST['tip_usu'];
-        $sqladd = " INSERT INTO tipo_usuario(tipo_usuario)VALUES ('$tp') ";
+        $idVisita = $_POST['id_visitaPOST']; 
+        $idMedic = $_POST['id_medicPOST']; 
+        $sqladd = " INSERT INTO historia_clinica (id_visita,id_medic) VALUES ('$idVisita','$idMedic') ";
         $query = mysqli_query($mysqli, $sqladd);
         echo '<script>alert (" Ingreso Exitoso! ");</script>';
-        echo '<script>window.location="agreg_tip_usu.php"</script>';
+        echo '<script>window.location="historia_clinica.php"</script>';
     }
 }
 
@@ -67,7 +89,7 @@ if (isset($_POST['btncerrar'])) {
     <title>taller</title>
 </head>
 
-<body onload="frmadd.tip_usu.focus()">
+<body onload="frmadd.id_med_visi.focus()">
 
     <header class="header">
         <nav class="navbar navbar-inverse" role="banner">
@@ -85,7 +107,7 @@ if (isset($_POST['btncerrar'])) {
                     <form method="POST">
 
                         <tr>
-                            <td colspan='2' align="center"><?php echo $usua['nombres'] ?></td>
+                            <td colspan='2' align="center"><?php echo $usua3['nombres'] ?></td>
                         </tr>
                         <tr>
 
@@ -120,19 +142,62 @@ if (isset($_POST['btncerrar'])) {
 
             <tr>
 
-                <td colspan="2">Tipos de Usuarios </td>
+                <td colspan="2">Crear historia clínica</td>
 
 
             </tr>
-
+           
+            <!-- INGRESO CAMPO id_visita VARCHAR (15) -->
             <tr>
 
-                <td>Tipo Usuario</td>
-                <td><input type="text" name="tip_usu" placeholder="Ingrese tipo usuario" style="text-transform: uppercase;"> </td>
+                <td>Id visita</td>
+                <td>
+                    <select name="id_visitaPOST">
+                        <option value=""> Seleccione una opción:</option>
+                        
+                        <?php
+                        do {
+                        ?>
+                            <option value="<?php echo ($usua2['id_visita']) ?>"> <?php echo ($usua2['id_visita']) ?><?php echo ("-") ?><?php echo ($usua2['fecha_visita']) ?>
+                            <?php
+
+                        } while ($usua2 = mysqli_fetch_assoc($usuarios2));
+
+                            ?> 
+
+                    </select>
+
+
+                </td>
 
 
             </tr>
 
+
+            <!-- INGRESO CAMPO id_medic VARCHAR (15) -->
+            <tr>
+
+            <td>Id medicamento</td>
+            <td>
+                <select name="id_medicPOST">
+                    <option value=""> Seleccione una opción:</option>
+                    
+                    <?php
+                    do {
+                    ?>
+                        <option value="<?php echo ($usua1['id_medic']) ?>"> <?php echo ($usua1['descrip_medic']) ?>
+                        <?php
+
+                    } while ($usua1 = mysqli_fetch_assoc($usuarios1));
+
+                        ?> 
+
+                </select>
+
+
+            </td>
+
+            </tr>
 
             <tr>
 
