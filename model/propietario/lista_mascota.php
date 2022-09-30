@@ -17,14 +17,12 @@ $usua1 = mysqli_fetch_assoc($usuarios1);
 ?>
 
 <?php
-
 if (isset($_POST['btncerrar'])) { //para cerrar sesion
     session_destroy();
 
 
     header('location: ../../index.html');
 }
-
 ?>
 
 
@@ -57,11 +55,6 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
 
 
                     <form method="POST">
-
-
-
-
-
 
                         <tr>
 
@@ -96,21 +89,21 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
             <tr>
                 <td>&nbsp;</td>
                 <!--para deja espacio-->
-
                 <td>Nombres mascota</td>
                 <td>Color mascota</td>
                 <td>Raza</td>
                 <td>Identificacion</td>
                 <td>id tipo mascota</td>
                 <td> tipo mascota</td>
-                <td>Accción</td>
-                <td>&nbsp;</td>
+                <td> Historia clínica</td>
+                  
+                
             </tr>
 
             <?php
             //consulta a la base de datos
             
-            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion AND mascota.identificacion= '" . $usua1['identificacion'] . "'"; //consulta a las tablas y enlasamos las tablas por los valore puentes
+            $sql = "SELECT * FROM mascota, tipo_mascotas, persona WHERE mascota.id_tipo_masc = tipo_mascotas.id_tipo_masc AND mascota.identificacion = persona.identificacion AND mascota.identificacion= '" . $_SESSION['identificacion'] . "'"; //consulta a las tablas y enlasamos las tablas por los valore puentes
             $i = 0; //contador
             $query = mysqli_query($mysqli, $sql); //llamamos la variable que tiene la conexion
             while ($result = mysqli_fetch_assoc($query)) {
@@ -124,9 +117,9 @@ if (isset($_POST['btncerrar'])) { //para cerrar sesion
                     <td><?php echo $result['identificacion'] ?></td>
                     <td><?php echo $result['id_tipo_masc'] ?></td>
                     <td><?php echo $result['tipo_masc'] ?></td>
-
-                    <td><a href="?id=<?php echo $result['identificacion'] ?>" onclick="window.open('update_masc.php?id=<?php echo $result['identificacion'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Update/Delete</a></td>
-                    <td>&nbsp;</td>
+                    <td><a href="?id=<?php echo $result['id_mascota'] ?>" onclick="window.open('read_masc.php?id=<?php echo $result['id_mascota'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Más...</a></td>
+                    
+                    
                 </tr>
 
             <?php } ?>
